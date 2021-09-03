@@ -42,8 +42,8 @@ void merge(int *arr1, int *arr2, int n, int m)
 // Driver code
 int main()
 {
-    int a1[] = {10, 27, 38, 43, 82};
-    int a2[] = {3, 9};
+    int a1[] = {6, 2};
+    int a2[] = {5, 4, 8, 7, 1, 3, 10};
     int n = sizeof(a1) / sizeof(int);
     int m = sizeof(a2) / sizeof(int);
 
