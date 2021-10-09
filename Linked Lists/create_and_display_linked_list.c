@@ -23,6 +23,7 @@ void create(int A[], int n)
         last = t;
     }
 }
+
 void Display(struct Node *p)
 {
     while (p != NULL)
