@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "Q2_CREATE_LL_BY_ADDING_AT_LHS_AND_DELETE.C": "cpp"
+        "Q2_CREATE_LL_BY_ADDING_AT_LHS_AND_DELETE.C": "cpp",
+        "Q1_ASSIGMENT.C": "cpp",
+        "Q2_ASSIGMENT.C": "cpp",
+        "Q3_ASSIGMENT.C": "cpp",
+        "Q4_ASSIGMENT.C": "cpp",
+        "Q5_ASSIGMENT.C": "cpp",
+        "stdio.h": "c",
+        "circular_ll_at_LHS_SINGLE_POINTER.C": "cpp",
+        "CONVERT_SINGLE_LL_TO_CIRCULAR_LL.C": "cpp"
     }
 }
