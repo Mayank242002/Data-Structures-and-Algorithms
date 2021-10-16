@@ -68,38 +68,36 @@ void delete (struct Node **f1,struct Node **r1)
 void Roundrobin(struct Node **f1,struct Node **r1,int ct)
 {
     int totaltime=ct;
-    struct Node *p=NULL,*q,*t;
-    p=*f1;
-    q=NULL;
-    while (*f1!=NULL)
+    struct Node *p=*f1,*q=*r1,*t;
+    while ((*f1)!=NULL)
     { 
         p->data-=ct;
         if (p->data<=0)
         {
-            printf("Process %d terminated in %dns\n",p->a,totaltime);
+            printf("\nProcess %d terminated in %dns\n",p->a,totaltime);
             if (p==*f1)
             {
                 t=p;
-                p=*f1=(*f1)->next;
-                q=NULL;
+                *f1=(*f1)->next;
                 (*r1)->next=*f1;
-                free(t);
-                if (*f1==*r1)
+                p=*f1;
+                if (*f1==*r1 && (*f1)->data<=0)
                 {
-                    *f1=*r1=NULL;
+                    p=q=*f1=*r1=NULL;
                 }
             }
             else if (p==*r1){
                 t=p;
-                p=q->next=p->next;
+                q->next=p->next;
+                p=p->next;
                 *r1=q;
-                free(t);
             }
             else{
                 t=p;
-                p=q->next=p->next;
-                free(t);
+                q->next=p->next;
+                p=p->next;
             }
+            free(t);
         }
         else{
             q=p;
