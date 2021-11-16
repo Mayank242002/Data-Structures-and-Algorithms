@@ -25,7 +25,6 @@ int main()
       scanf("%d",&n);
       t=(struct Node*)malloc(sizeof(struct Node));
       t->data=n;
-      t->next=NULL;
 
       if (first==NULL)
       {
