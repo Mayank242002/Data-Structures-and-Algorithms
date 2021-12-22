@@ -92,8 +92,9 @@ void Delete(struct Node **f,struct Node **l)
        {
            p=temp->next;
            temp->next=temp->next->next;
-           *l=temp->next;
        }
+       if (p==*l)
+           *l=temp;
        
    }
 

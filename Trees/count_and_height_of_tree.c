@@ -123,6 +123,49 @@ int countof0degreenodes(struct Node *p)
     }
     return 0;
 }
+int countof_1_or_2_degreenodes(struct Node *p)
+{
+    int x, y;
+    if (p != NULL)
+    {
+        x = countof0degreenodes(p->lchild);
+        y = countof0degreenodes(p->rchild);
+        if (p->lchild == NULL || p->rchild == NULL)
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+}
+int countof_2_or_0_degreenodes(struct Node *p)
+{
+    int x, y;
+    if (p != NULL)
+    {
+        x = countof0degreenodes(p->lchild);
+        y = countof0degreenodes(p->rchild);
+        if ((p->lchild == NULL && p->rchild == NULL)||(p->lchild&& p->rchild))
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+}
+
+int countof_1_or_0_degreenodes(struct Node *p)
+{
+    int x, y;
+    if (p != NULL)
+    {
+        x = countof0degreenodes(p->lchild);
+        y = countof0degreenodes(p->rchild);
+        if ((p->lchild == NULL && p->rchild == NULL)||(p->lchild && !p->rchild) || (!p->lchild && p->rchild))
+            return x + y + 1;
+        else
+            return x + y;
+    }
+    return 0;
+}
 int main()
 {
 

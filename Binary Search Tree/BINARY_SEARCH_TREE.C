@@ -160,10 +160,10 @@ int main()
 {
     struct Node *temp;
     root = Rinsert(root, 10);
-    Rinsert(root, 8);
-    Rinsert(root, 12);
-    Rinsert(root, 5);
-    Rinsert(root, 20);
-    Delete(root, 12);
+    insert( 8);
+    insert( 12);
+    insert( 5);
+    insert( 20);
+    //Delete(root, 12);
     Inorder(root);
 }

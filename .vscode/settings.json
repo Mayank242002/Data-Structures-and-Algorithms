@@ -10,6 +10,8 @@
         "circular_ll_at_LHS_SINGLE_POINTER.C": "cpp",
         "CONVERT_SINGLE_LL_TO_CIRCULAR_LL.C": "cpp",
         "Double_LL_By_adding_at_RHS_SINGLE_POINTER.C": "cpp",
-        "Double_LL_By_adding_at_LHS_RHS_SINGLE_POINTER.C": "cpp"
+        "Double_LL_By_adding_at_LHS_RHS_SINGLE_POINTER.C": "cpp",
+        "BINARY_SEARCH_TREE.C": "cpp",
+        "ostream": "cpp"
     }
 }
