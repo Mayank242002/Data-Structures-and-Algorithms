@@ -28,12 +28,12 @@ int find(int u)
     {
         x = set[x];
     }
-    while (u != x)
+   /* while (u != x)
     {
-        v = set[u];
+        v = set[u];     //path compression
         set[u] = x;
         u = v;
-    }
+    }*/
     return x;
 }
 
@@ -65,10 +65,10 @@ int main()
         included[k] = 1;
     }
 
-    printf("Spanning Tree\n");
+    printf("Minimum Spanning Tree Edges\n");
     for (i = 0; i < n - 1; i++)
     {
-        printf("(%d,%d)\n", t[0][i], t[1][i]);
+        printf("(%d -- %d)\n", t[0][i], t[1][i]);
     }
     return 0;
 }

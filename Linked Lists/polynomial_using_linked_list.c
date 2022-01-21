@@ -138,10 +138,12 @@ int main()
 
     create();
     create2();
+    printf("Polynomial 1:");
     Display(poly);
-    //printf("\n");
+    printf("\n");
+    printf("Polynomial 2:");
     Display(poly2);
-    //printf("\n");
+    printf("\n");
     add(poly, poly2);
 
     return 0;

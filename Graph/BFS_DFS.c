@@ -4,7 +4,6 @@
 void BFS(int G[][7], int start, int n)
 {
     int i = start;
-
     int visited[7] = {0};
     printf("%d ", i);
     visited[i] = 1;

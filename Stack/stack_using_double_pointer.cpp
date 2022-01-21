@@ -33,6 +33,7 @@ void  pop(struct Node **Top)
     }
    
 }
+/*
 int peek(int pos,struct Node *Top)
 {
     int i;
@@ -67,22 +68,42 @@ int isfull()
         return 1;
     else
         return 0;
-}
+}*/
 void display(struct Node *p)
 {
     while (p)
     {
-        printf("%d\n", p->data);
+        printf("%d ", p->data);
         p = p->next;
     }
+    printf("\n");
 }
 int main()
 {
-    struct Node *Top = NULL;  
-    push(&Top,12);
-    push(&Top,13);
-    push(&Top,14);
-    push(&Top,15);
-    pop(&Top);
-    display(Top);
+    
+     struct Node *Top = NULL;  
+    int choice;
+    printf("1.Push\n2.pop\n3.Display\n4.Exit\n");
+    scanf("%d",&choice);
+    do
+    {
+      if (choice==1)
+      {
+          int x;
+          printf("enter the value to be inserted:");
+          scanf("%d",&x);
+          push(&Top,x);
+      }
+      else if (choice==2)
+      {
+          pop(&Top);
+      }
+      else if (choice==3)
+          display(Top);
+      else if (choice==4)
+         break;
+
+         printf("\n1.Push\n2.pop\n3.Display\n4.Exit\n");
+    scanf("%d",&choice);
+    } while (choice<=4);
 }
