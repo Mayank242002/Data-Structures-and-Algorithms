@@ -81,7 +81,7 @@ void display(struct Node *p)
 int main()
 {
     
-     struct Node *Top = NULL;  
+    struct Node *Top = NULL;  
     int choice;
     printf("1.Push\n2.pop\n3.Display\n4.Exit\n");
     scanf("%d",&choice);
