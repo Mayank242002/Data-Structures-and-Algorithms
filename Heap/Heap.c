@@ -21,11 +21,8 @@ void swap(int *x, int *y)
 }
 int delete (int A[], int n)
 {
-    int x, i, j, deletedvalue;
-    deletedvalue = A[1];
-    x = A[n];
-    A[1] = A[n];
-    A[n] = deletedvalue; //condition for heap sort
+    int i, j;
+    swap(&A[1],&A[n]);
     i = 1;
     j = 2 * i;
     while (j < n - 1)
@@ -36,27 +33,25 @@ int delete (int A[], int n)
         {
             swap(&A[i], &A[j]);
             i = j;
-            j = j * j;
+            j = 2 * i;
         }
         else
             break;
     }
-
-    return deletedvalue;
 }
 
 int main()
 {
-    int H[] = {0, 10, 20, 30, 25, 5, 40, 35};
+    int H[] = {0,10, 20, 30, 25, 5, 40, 35};
     int i;
     for (i = 2; i <= 7; i++)
     {
         insert(H, i);
     }
-    /*for (i = 7; i > 1; i--)
+    for (i = 7; i > 1; i--)
     {
         delete (H, i);
-    }*/
+    }
 
     for (i = 1; i <= 7; i++)
     {
