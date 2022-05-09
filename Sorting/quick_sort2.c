@@ -10,6 +10,7 @@ void swap(int *x, int *y)
 }
 void quick_sort(int arr[],int lb,int ub)
 {
+   
     int pivot=arr[lb];
     int i=lb,j=ub;
 
@@ -44,7 +45,4 @@ int main()
 
     for (int i=0;i<n;i++)
         printf("%d ",arr[i]);
-       
-    
-
 }
