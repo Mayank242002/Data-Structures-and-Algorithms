@@ -1,7 +1,4 @@
-#include<iostream>
-#include<vector>
-#include <utility>
-#include<queue>
+#include<bits/stdc++.h>
 using namespace std;
 
 bool CheckForCycle(int start,vector<int> &vis,vector<int> adj[],int v)

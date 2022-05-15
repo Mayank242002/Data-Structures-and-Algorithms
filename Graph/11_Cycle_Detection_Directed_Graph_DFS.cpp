@@ -1,7 +1,4 @@
-#include<iostream>
-#include<vector>
-#include <utility>
-#include<cstring>
+#include<bits/stdc++.h>
 using namespace std;
 
 //Directedgraph using adjancency matrix O(n2)
@@ -25,7 +22,7 @@ bool CheckCycle(int node,vector<int> adj[],int vis[],int dfsvis[])
 bool isCycle(vector<int> adj[],int N)
 {
     
-    int vis[N],dfsVis[N];
+    int vis[N+1],dfsVis[N+1];
     memset(vis,0,sizeof(vis));
     memset(dfsVis,0,sizeof(dfsVis));
     for (int i=1;i<=N;i++)
