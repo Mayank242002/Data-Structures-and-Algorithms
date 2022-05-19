@@ -1,74 +1,71 @@
-#include <stdio.h>
-#include <limits.h>
-#define I INT_MAX
-
-int edge[3][9] = {{1, 1, 2, 2, 3, 4, 4, 5, 5}, {2, 6, 3, 7, 4, 5, 7, 6, 7}, {25, 5, 12, 10, 8, 16, 14, 20, 18}};
-int set[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
-int included[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-int t[2][7];
-
-void Myunion(int u, int v)
-{
-    if (set[u] < set[v])
-    {
-        set[u] += set[v];
-        set[v] = u;
+#include<bits/stdc++.h>
+using namespace std;
+struct node {
+    int u;
+    int v;
+    int wt; 
+    node(int first, int second, int weight) {
+        u = first;
+        v = second;
+        wt = weight;
     }
-    else
-    {
-        set[v] += set[u];
-        set[u] = v;
-    }
-}
-int find(int u)
-{
-    int x = u, v = 0;
-    while (set[x] > 0)
-    {
-        x = set[x];
-    }
-   /* while (u != x)
-    {
-        v = set[u];     //path compression
-        set[u] = x;
-        u = v;
-    }*/
-    return x;
+};
+
+bool comp(node a, node b) {
+    return a.wt < b.wt; 
 }
 
-int main()
-{
-    int i = 0, j, k, u, v, min = I, n = 7, e = 9;
-    while (i < n - 1)
-    {
-        min = I;
-        for (j = 0; j < e; j++)
-        {
-            if (included[j] == 0 && edge[2][j] < min)
-            {
-                min = edge[2][j];
-                k = j;
-                u = edge[0][j];
-                v = edge[1][j];
-            }
-        }
+int findPar(int u, vector<int> &parent) {
+    if(u == parent[u]) return u; 
+    return parent[u] = findPar(parent[u], parent); 
+}
 
-        if (find(u) != find(v))
-        {
-            t[0][i] = u;
-            t[1][i] = v;
-            Myunion(find(u), find(v));
-            i++;
-        }
-
-        included[k] = 1;
+void unionn(int u, int v, vector<int> &parent, vector<int> &rank) {
+    u = findPar(u, parent);
+    v = findPar(v, parent);
+    if(rank[u] < rank[v]) {
+    	parent[u] = v;
     }
-
-    printf("Minimum Spanning Tree Edges\n");
-    for (i = 0; i < n - 1; i++)
-    {
-        printf("(%d -- %d)\n", t[0][i], t[1][i]);
+    else if(rank[v] < rank[u]) {
+    	parent[v] = u; 
     }
-    return 0;
+    else {
+    	parent[v] = u;
+    	rank[u]++; 
+    }
+}
+int main(){
+	int N=5,m=6;
+	vector<node> edges; 
+	edges.push_back(node(0,1,2));
+	edges.push_back(node(0,3,6));
+	edges.push_back(node(1,0,2));
+	edges.push_back(node(1,2,3));
+	edges.push_back(node(1,3,8));
+	edges.push_back(node(1,4,5));
+	edges.push_back(node(2,1,3));
+	edges.push_back(node(2,4,7));
+	edges.push_back(node(3,0,6));
+	edges.push_back(node(3,1,8));
+	edges.push_back(node(4,1,5));
+	edges.push_back(node(4,2,7));
+	sort(edges.begin(), edges.end(), comp); 
+	
+	vector<int> parent(N);
+	for(int i = 0;i<N;i++) 
+	    parent[i] = i; 
+	vector<int> rank(N, 0); 
+	
+	int cost = 0;
+	vector<pair<int,int>> mst; 
+	for(auto it : edges) {
+	    if(findPar(it.v, parent) != findPar(it.u, parent)) {
+	        cost += it.wt; 
+	        mst.push_back({it.u, it.v}); 
+	        unionn(it.u, it.v, parent, rank); 
+	    }
+	}
+	cout << cost << endl;
+	for(auto it : mst) cout << it.first << " - " << it.second << endl; 
+	return 0;
 }
