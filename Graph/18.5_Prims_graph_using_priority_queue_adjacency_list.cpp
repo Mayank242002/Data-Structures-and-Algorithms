@@ -31,7 +31,6 @@ int main(){
     // because in the brute code we checked for mstSet[node] == false while computing the minimum
     // but here we simply take the minimal from the priority queue, so a lot of times a node might be taken twice
     // hence its better to keep running till all the nodes have been taken. 
-    // try the following case: 
     while(!pq.empty())
     { 
         int u = pq.top().second; 
@@ -42,9 +41,10 @@ int main(){
         for (auto it : adj[u]) {
             int v = it.first;
             int weight = it.second;
-            if (mstSet[v] == false && weight < key[v]) {
+            if (mstSet[v] == false && weight < key[v])
+            {
                 parent[v] = u;
-		key[v] = weight; 
+		        key[v] = weight; 
                 pq.push({key[v], v});    
             }
         }
