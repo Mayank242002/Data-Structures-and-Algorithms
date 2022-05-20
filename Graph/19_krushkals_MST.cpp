@@ -16,7 +16,8 @@ bool comp(node a, node b) {
 }
 
 int findPar(int u, vector<int> &parent) {
-    if(u == parent[u]) return u; 
+    if(u== parent[u]) 
+	   return u; 
     return parent[u] = findPar(parent[u], parent); 
 }
 
@@ -35,20 +36,27 @@ void unionn(int u, int v, vector<int> &parent, vector<int> &rank) {
     }
 }
 int main(){
-	int N=5,m=6;
+	int N,m;
+	cin>>N>>m;
+	vector<pair<int,int>> adj[N];
+	cout<<"enter the edge and its weight"<<endl;
+	for (int i=0;i<m;i++)
+	{
+		int a,b,wt;
+		cin>>a>>b>>wt;
+		adj[a].push_back({b,wt});
+		adj[b].push_back({a,wt});
+	}
 	vector<node> edges; 
-	edges.push_back(node(0,1,2));
-	edges.push_back(node(0,3,6));
-	edges.push_back(node(1,0,2));
-	edges.push_back(node(1,2,3));
-	edges.push_back(node(1,3,8));
-	edges.push_back(node(1,4,5));
-	edges.push_back(node(2,1,3));
-	edges.push_back(node(2,4,7));
-	edges.push_back(node(3,0,6));
-	edges.push_back(node(3,1,8));
-	edges.push_back(node(4,1,5));
-	edges.push_back(node(4,2,7));
+	
+	//converting adjacency list to the easy edge structure
+    for (int i=0;i<N;i++)
+	{
+		for (auto it:adj[i])
+		{
+			edges.push_back(node(i,it.first,it.second));
+		}
+	}
 	sort(edges.begin(), edges.end(), comp); 
 	
 	vector<int> parent(N);
