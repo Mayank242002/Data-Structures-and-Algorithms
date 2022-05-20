@@ -25,26 +25,14 @@ int main()
 
     for (int i=0;i<n;i++)
     {
-        key[i]=INT_MAX;
-        mstset[i]=false;
-        parent[i]=-1;
+        key[i]=INT_MAX;   //for marking minimum distance
+        mstset[i]=false;  //mset is to check whether given node is already present in MST or not
+        parent[i]=-1;   //for marking parents
     }
-    int main_node=0,min_weight=INT_MAX;
-    for (int i=0;i<n;i++)
-    {
-        for (auto it: adj[i])
-        {
-            int node=it.first;
-            int weight=it.second;
-            if (weight<min_weight)
-            {
-                min_weight=weight;
-                main_node=node;
-            }
-        }
-    }
-    key[main_node]=0;
-    parent[main_node]=main_node;
+
+    key[0]=0;   //Assumption: this means starting with node 0
+    parent[0]=-1;
+
     for (int count=0;count<n-1;count++)
     {
         int mini=INT_MAX,u;
