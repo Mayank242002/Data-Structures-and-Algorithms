@@ -14,17 +14,15 @@ vector<int> Dijkastra_algo(vector<pair<int,int>> adj[],int src,int n)
     pq.push(make_pair(0,src));
     while (!pq.empty())
     {
-        int dist=pq.top().first;
-        int prev=pq.top().second;
+        int node=pq.top().second;
+        int weight=pq.top().first;
         pq.pop();
-        for (auto it: adj[prev])
+        for (auto it: adj[node])
         {
-            int next=it.first;
-            int nextdist=it.second;
-            if (distTo[next]>distTo[prev]+nextdist)
+            if (distTo[node]+it.second<distTo[it.first])
             {
-                distTo[next]=distTo[prev]+nextdist;
-                pq.push(make_pair(distTo[next],next));
+                distTo[it.first]=distTo[node]+it.second;
+                pq.push({distTo[it.first],it.first});
             }
         }
     }
