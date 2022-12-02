@@ -82,8 +82,10 @@ int main()
 {
     Trie obj;
     obj.insert("Hello");
+    obj.insert("Mayank");
     cout<<obj.search("Hello")<<endl;
     cout<<obj.startsWith("He")<<endl;
+    cout<<obj.startsWith("Maya")<<endl;
 
 
 }
