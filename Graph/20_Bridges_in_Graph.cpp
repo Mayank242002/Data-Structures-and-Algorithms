@@ -13,14 +13,14 @@ void dfs(int node,int parent,vector<int> &vis,vector<int> &in,vector<int> &low,i
         if (it==parent) continue;
         else if (vis[it]==1)
         {
-            low[node]=min(low[node],in[it]);
+            low[node]=min(low[node],in[it]);  //back edge is present so update the low (which simply indicates another route is present to that node )
         }
         else
         {
             dfs(it,node,vis,in,low,timer,adj);
-            if (low[it]>in[node])
+            low[node]=min(low[node],low[it]);  //(if child low gets updated due to back edge then parent low also get updated because there is another way to reach parent)
+            if (low[it]>in[node])   //(it would be only possible if there is only way to react child node)
                  cout<<node<<" - "<<it<<" is a bridge\n";
-            low[node]=min(low[node],low[it]);
         }
     }
 
