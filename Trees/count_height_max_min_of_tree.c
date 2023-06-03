@@ -54,7 +54,10 @@ int countoftotalnodes(struct Node *p)
     }
     return 0;
 }
-
+int max(int a,int b)
+{
+    return (a>b)?a:b;
+}
 int height(struct Node *p)
 {
     int x, y;
@@ -70,6 +73,19 @@ int height(struct Node *p)
     return 0;
 }
 
+int depth(struct Node *head,struct Node *p)
+{
+    if (head==NULL) 
+        return -1;
+    else if (head==p)
+       return 0;
+    int leftval=depth(head->lchild,p);
+    int rightval=depth(head->rchild,p);
+    if (leftval==rightval)
+      return -1;
+    else
+      return 1+max(leftval,rightval); 
+}
 int countof2degreenodes(struct Node *p)
 {
     int x, y;
@@ -226,4 +242,5 @@ int main()
     printf("%d is the number of nodes with degree 0 in the tree\n", countof0degreenodes(root));
     printf("%d is the number of nodes with degree 1 or 2 in the tree\n", countof_1_or_2_degreenodes(root));
     printf("%d is the minimum in BT",min_in_BT(root));
+    printf("%d is the depth of ")
 }

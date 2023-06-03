@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 #include <queue>
 using namespace std;
 
@@ -66,10 +66,26 @@ int height(struct Node *p)
     int y=height(p->rchild);
     return 1+max(x,y);
 }
+
+int depth(struct Node *head,struct Node *p)
+{
+    if (head==NULL) 
+        return -1;
+    else if (head==p)
+       return 0;
+    int leftval=depth(head->lchild,p);
+    int rightval=depth(head->rchild,p);
+    if (leftval==rightval)
+      return -1;
+    else
+      return 1+max(leftval,rightval); 
+}
+
+
 int main()
 {
     struct Node *root=nullptr;
     root=Binary_tree(root);
     Preorder(root);
-    cout<<endl<<height(root)<<endl;
+    cout<<endl<<depth(root,root)<<endl;
 }
